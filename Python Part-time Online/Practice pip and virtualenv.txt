@@ -1,0 +1,26 @@
+pip install Django==1.11.9
+	Installs Django 1.11.9 package and all default packages needed for it.
+
+pip list
+	shows what packages are installed on the machine.
+
+deactivate
+	deactivates virtual environment
+
+pip list
+	shows what packages are installed outside of environment.
+
+pip install Django==1.11.9
+	Installs Django 1.11.9 package and all default packages needed for it, but it is already installed/satisfied.
+
+pip freeze
+	Tells you which modules you've installed with pip install and the versions of these modules that you are currently have installed on your computer.
+
+pip freeze > requirements.txt
+	Records an environment's current package list into requirements. txt. If you want to install the dependencies in a virtual environment, create and activate that environment first, then use the Install from requirements.
+
+pip uninstall Django
+	Uninstall Django
+
+pip show Django
+	Show information about one or more installed packages.

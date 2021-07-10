@@ -2,6 +2,9 @@
 # Folders to Ignore
 #-------------------------------------------------#
 
+/Web Fundamentals Part-time Online/Helpful Material and Resources/
+
+
 
 
 
