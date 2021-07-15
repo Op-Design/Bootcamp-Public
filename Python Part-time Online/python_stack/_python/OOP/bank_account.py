@@ -24,7 +24,7 @@
 
 
 class BankAccount:
-    def __init__(self, interest, balance = None):
+    def __init__(self, interest, balance = 0):
         if balance == None:
             self.account_balance = 0
             self.account_interest = interest

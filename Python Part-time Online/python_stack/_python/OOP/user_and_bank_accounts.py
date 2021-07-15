@@ -10,10 +10,10 @@
 import bank_account
 
 class User:
-    def __init__(self, username, email, interest, balance = None):
+    def __init__(self, username, email, interest, balance = 0):
         self.name = username
         self.email = email
-        self.account_balance = bank_account.BankAccount(interest, balance)
+        self.accounts = bank_account.BankAccount(interest, balance)
 
     def make_deposit(self, amount):
         self.account_balance.deposit(amount)
@@ -38,6 +38,8 @@ class User:
 Sam = User("Sam", "sam@test.com", 0.02)
 Veronica = User("Veronica", "veronica@test.com", 0.02)
 Trevor = User("Trevor", "trevor@test.com", 0.02)
+Trevor.account_balance2 = bank_account.BankAccount(0.04, 5000)
+print (Trevor.account_balance2.account_balance)
 
 Sam.make_deposit(200)
 Sam.make_deposit(700)
