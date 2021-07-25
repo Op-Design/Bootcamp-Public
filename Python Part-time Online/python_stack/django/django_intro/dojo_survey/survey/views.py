@@ -1,9 +1,12 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import redirect, render, HttpResponse
 
 def survey(request):
     return render(request, "survey.html")
 
 def result(request):
+    return redirect('/session')
+
+def session(request):
     if request.method == 'POST':
         context = {
             'firstName': request.POST['firstName'],

@@ -4,4 +4,5 @@ from . import views
 urlpatterns = [
     path('', views.survey),
     path('result', views.result),
+    path('session', views.session),
 ]

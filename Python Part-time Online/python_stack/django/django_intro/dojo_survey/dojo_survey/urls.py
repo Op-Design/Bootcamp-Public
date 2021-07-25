@@ -20,4 +20,5 @@ urlpatterns = [
     # path('admin/', admin.site.urls),
     path('', include('survey.urls')),
     path('result', include('survey.urls')),
+    path('session', include('survey.urls')),
 ]
