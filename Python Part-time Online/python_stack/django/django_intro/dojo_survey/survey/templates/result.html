@@ -9,11 +9,17 @@
 <body>
     <form>
         <h1>Results</h1>
-        Name: {{firstName}}<br>
+        First Name: {{firstName}}<br>
         LastName: {{lastName}}<br>
         Country: {{country}}<br>
         Dojo Location: {{dojoLocation}}<br>
-        Comment: {{comment}}<br>
+        Comment: {{comment}}<br><br>
+
+        Name: {{request.session.firstName}}<br>
+        LastName: {{request.session.lastName}}<br>
+        Country: {{request.session.country}}<br>
+        Dojo Location: {{request.session.dojoLocation}}<br>
+        Comment: {{request.session.comment}}<br>
     </form>
 </body>
 </html>
