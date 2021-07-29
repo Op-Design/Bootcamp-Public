@@ -1,0 +1,19 @@
+Create Users:
+    Users.objects.create (first_name='Isiah', last_name='Washington', email_address='iw@gmail.com', age=28)
+    Users.objects.create(first_name='Jeremiah', last_name='Baker', email_address='jb@gmail.com', age=23)
+    Users.objects.create(first_name='Nicole', last_name='Richard', email_address='nr@gmail.com', age=24)
+
+Retrieve
+    Users.objects.all()
+    Users.objects.first()
+    Users.objects.last()
+
+Change:
+    a = Users.objects.last()
+    a.last_name = 'Pancakes'
+    b = Users.objects.get(id=2)
+    b.delete()
+
+Sort:
+    Users.objects.all().order_by('first_name')
+    Users.objects.all().order_by('-first_name')

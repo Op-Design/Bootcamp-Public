@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <h1>Results</h1>
+        First Name: {{firstName}}<br>
+        LastName: {{lastName}}<br>
+        Country: {{country}}<br>
+        Dojo Location: {{dojoLocation}}<br>
+        Comment: {{comment}}<br><br>
+
+        Name: {{request.session.firstName}}<br>
+        LastName: {{request.session.lastName}}<br>
+        Country: {{request.session.country}}<br>
+        Dojo Location: {{request.session.dojoLocation}}<br>
+        Comment: {{request.session.comment}}<br>
+    </form>
+</body>
+</html>
