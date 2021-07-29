@@ -1,0 +1,19 @@
+Create Users:
+    Dojo.objects.create(name='Dallas', city='Dallas', state='Texas')
+     ...others are similar
+
+Delete:
+    b = Users.objects.all()
+    b.delete()
+
+Ninjas
+    Ninja.objects.create(dojo=Dojo.objects.get(id=4),first_name='Patrick', last_name='Saunders')
+     ...others are similar
+
+
+Filter:
+    Ninja.objects.filter(dojo = 3)
+     ...others are similar
+
+Create Users:
+    Dojo.objects.create(name='Dallas', city='Dallas', state='Texas', desc='New Dojo')
