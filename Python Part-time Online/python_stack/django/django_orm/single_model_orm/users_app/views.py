@@ -9,7 +9,7 @@ def index(request):
             last_name = request.POST['last_name'],
             email_address = request.POST['email_address'],
             age = request.POST['age'],
-        ),
+        )
     context = {
         "all_the_users" : Users.objects.all(),
     }

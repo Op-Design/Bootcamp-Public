@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Coding Dojo Survey</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../static/form-validation.css" rel="stylesheet">
+  </head>
+
+  <body class="bg-light">
+    <p class="text-right"><a href=/shows>Go Back</a></p>
+    <div class="col-md order-md-1">
+      <h2 class="py-5">TV Show {{ show.id }}</h2>
+        <div class="table-responsive">
+          <p>Title: {{ show.title }}</p>
+          <p>Network: {{ show.network }}</p> 
+          <p>Realease: {{ show.release_date }}</p>
+          <p>Description: {{ show.description }}</p> <br><br><br><br>
+          <p>Last Updated: {{ show.updated_at }}</p>
+        </div>
+      <a href="/shows/{{show.id}}/edit">Edit</a> |
+      <a href="/shows/{{show.id}}/destroy">Delete</a>
+    </div>
+  </body>
+</html>

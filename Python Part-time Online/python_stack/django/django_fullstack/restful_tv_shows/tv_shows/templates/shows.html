@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Coding Dojo Survey</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../static/form-validation.css" rel="stylesheet">
+  </head>
+
+  <body class="bg-light">
+    <div class="col-md order-md-1">
+      <h2 class="py-5">All Shows</h2>
+        <div class="table-responsive">
+          <table class="table table-striped table-sm">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Network</th>
+                <th>Release Date</th>
+                <th></th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for shows in all_the_shows %}
+              <tr>
+                <td>{{ shows.id }}</td>
+                <td>{{ shows.title }}</td>
+                <td>{{ shows.network }}</td> 
+                <td>{{ shows.release_date }}</td>
+                <td><a href='/shows/{{shows.id}}'>Show</a></td>
+                <td><a href='/shows/{{shows.id}}/edit'>Edit</a></td>
+                <td><a href='/shows/{{shows.id}}/destroy'>Delete</a></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      <a href="/shows/create" class="py-3">Add a New Show</a>
+    </div>
+  </body>
+</html>
