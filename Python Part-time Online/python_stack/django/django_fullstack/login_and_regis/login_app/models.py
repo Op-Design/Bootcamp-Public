@@ -2,7 +2,7 @@ from django.db import models
 import re
 
 class RegistrationManager (models.Manager):
-    def basic_validator(self,postData):
+    def registration_validator(self,postData):
         errors={}
         EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
         if not EMAIL_REGEX.match(postData['email']):
@@ -21,6 +21,14 @@ class RegistrationManager (models.Manager):
         if not postData['password']==postData['c_password']:
             errors['password_c']='Passwords should match'
         return errors
+    def login_validator(self,postData):
+        email = User.object.filter(email=PostData['email'])
+        if email:
+            logged_user = email[0]
+        if bcrypt.checkpw(request.POST['password'].encode(),logged_user.password.encode()):
+            request.session['user_id']=logged_user.id
+            return redirect('/success')        
+    
 
 class Registration (models.Model):
     pass
