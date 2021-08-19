@@ -1,16 +1,16 @@
 from django.db import models
-import re
+import re, bcrypt
 
-class RegistrationManager (models.Manager):
+class UserManager (models.Manager):
     def registration_validator(self,postData):
         errors={}
         EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
+        email = User.objects.filter(email=postData['email'])
         if not EMAIL_REGEX.match(postData['email']):
             errors['email_invalid'] = 'Invalid email address'
-            # I removed the parenthesis here so consider if this might cause an error
         if len(postData['email'])==None:
-            errors['email_len']='Email should be at least 2 characters'
-        if not (Registration.objects.filter(email=postData['email'])==[]):
+            errors['email_len']='Email address required'
+        if email:
             errors['email_unique']='Email is already in system'
         if len(postData['first_name'])<2:
             errors['first_name']='First Name should be at least 2 characters'
@@ -21,25 +21,27 @@ class RegistrationManager (models.Manager):
         if not postData['password']==postData['c_password']:
             errors['password_c']='Passwords should match'
         return errors
+  
     def login_validator(self,postData):
-        email = User.object.filter(email=PostData['email'])
-        if email:
-            logged_user = email[0]
-        if bcrypt.checkpw(request.POST['password'].encode(),logged_user.password.encode()):
-            request.session['user_id']=logged_user.id
-            return redirect('/success')        
-    
+        errors={}
+        email = User.objects.filter(email=postData['email'])
+        if not email:
+            errors['creds']='Invalid Credentials TEST EMAIL'
+        else:
+            if email:
+                logged_user = email[0]
+                if not bcrypt.checkpw(postData['password'].encode(),logged_user.password.encode()):
+                    errors['creds']='Invalid Credentials TEST PASSWORD'
+        return errors    
 
-class Registration (models.Model):
-    pass
+class User(models.Model):
     first_name=models.CharField(max_length=255)
     last_name=models.CharField(max_length=255)
     email=models.CharField(max_length=255)
     password=models.CharField(max_length=255)
-    c_password=models.CharField(max_length=255)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
-    objects=RegistrationManager()
+    objects=UserManager()
     
     def __repr__(self):
         return f"<User: {self.first_name} {self.last_name} ({self.id})>"

@@ -9,10 +9,10 @@
     <title>Coding Dojo Survey</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../static/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="../static/form-validation.css" rel="stylesheet">
+    <link href="/static/form-validation.css" rel="stylesheet">
   </head>
 
   <body class="bg-light">
@@ -30,12 +30,12 @@
             </tr>
           </thead>
           <tbody>
-            {% for shows in all_the_shows %}
+            {% for user in users %}
             <tr>
-              <td>{{ users.first_name }}</td>
-              <td>{{ users.last_name }}</td>
-              <td>{{ users.email }}</td> 
-              <td>{{ users.password }}</td>
+              <td>{{ user.first_name }}</td>
+              <td>{{ user.last_name }}</td>
+              <td>{{ user.email }}</td> 
+              <td>{{ user.password }}</td>
             </tr>
             {% endfor %}
           </tbody>
