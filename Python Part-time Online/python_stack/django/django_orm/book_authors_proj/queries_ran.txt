@@ -1,0 +1,50 @@
+Create Books:
+    Book.objects.create(title = 'C Sharp'),
+    Book.objects.create(title = 'Java'),
+    Book.objects.create(title = 'Python'),
+    Book.objects.create(title = 'PHP'),
+    Book.objects.create(title = 'Ruby')
+
+    Author.objects.create(first_name = 'Jane', last_name = 'Austen'),
+    Author.objects.create(first_name = 'Emily', last_name = 'Dickinson'),
+    Author.objects.create(first_name = 'Fyodor', last_name = 'Dostoevsky'),
+    Author.objects.create(first_name = 'William', last_name = 'Shakespeare'),
+    Author.objects.create(first_name = 'Lau', last_name = 'Tzu')
+
+Change:
+    c = Book.objects.get(id=1)
+    c.title = 'C#'
+    c.save()
+
+    c = Author.objects.get(id=4)
+    c.first_name = 'Bill'
+    c.save()
+
+Assign:
+    Author.objects.get(id=1).books.add(Book.objects.get(id=1))
+    Author.objects.get(id=1).books.add(Book.objects.get(id=2))
+
+    Author.objects.get(id=2).books.add(Book.objects.get(id=1)),
+    Author.objects.get(id=2).books.add(Book.objects.get(id=2)),
+    Author.objects.get(id=2).books.add(Book.objects.get(id=3))
+
+    Author.objects.get(id=3).books.add(Book.objects.get(id=1)),
+    Author.objects.get(id=3).books.add(Book.objects.get(id=2)),
+    Author.objects.get(id=3).books.add(Book.objects.get(id=3)),
+    Author.objects.get(id=3).books.add(Book.objects.get(id=4))
+
+    Author.objects.get(id=4).books.add(Book.objects.get(id=1),Book.objects.get(id=2),Book.objects.get(id=3),Book.objects.get(id=4),Book.objects.get(id=5))
+
+Retrieval:
+    Book.objects.get(id=3).author.all()
+
+Delete:
+    c = Book.objects.get(id=3)
+    c.author.get(id=2).delete()
+
+Assign:
+    Author.objects.get(id=5).books.add(Book.objects.get(id=2))
+
+Find:
+    Author.objects.get(id=3).books.all()
+    Book.objects.get(id=5).author.all()

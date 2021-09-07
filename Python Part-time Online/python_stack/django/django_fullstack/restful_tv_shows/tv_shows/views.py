@@ -1,4 +1,5 @@
 from django.shortcuts import redirect, render, HttpResponse
+from django.contrib import messages
 from .models import Show
 
 def root(request):
@@ -11,13 +12,19 @@ def showsnew(request):
 
 def showscreate(request):
     if request.method == 'POST':
-        Show.objects.create(
-            title= request.POST['title'],
-            network=request.POST['network'],
-            release_date=request.POST['release_date'],
-            description=request.POST['description'],
-        )
-        return redirect('/shows')
+        errors = Show.objects.basic_validator(request.POST)
+        if len(errors) > 0:
+            for key, value in errors.items():
+                messages.error(request, value)
+            return redirect('/shows/create')
+        else:
+            Show.objects.create(
+                title= request.POST['title'],
+                network=request.POST['network'],
+                release_date=request.POST['release_date'],
+                description=request.POST['description'],
+            )
+            return redirect('/shows')
     return render(request, 'show_create.html')
     
 def showsid(request, id):
@@ -44,13 +51,19 @@ def showsidedit(request, id):
 
 def showsidupdate(request, id):
     if request.method == 'POST':
-        update = Show.objects.get(id=id)
-        update.title = request.POST['title']
-        update.network=request.POST['network']
-        update.release_date=request.POST['release_date']
-        update.description=request.POST['description']
-        update.save()
-        return redirect('/shows')
+        errors = Show.objects.basic_validator(request.POST)
+        if len(errors) > 0:
+            for key, value in errors.items():
+                messages.error(request, value)
+            return redirect(f'/shows/{id}/edit')
+        else:
+            update = Show.objects.get(id=id)
+            update.title = request.POST['title']
+            update.network=request.POST['network']
+            update.release_date=request.POST['release_date']
+            update.description=request.POST['description']
+            update.save()
+            return redirect('/shows')
     return redirect('/shows')
 
 def showsiddestroy(request, id):

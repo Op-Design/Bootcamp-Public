@@ -3,7 +3,11 @@
 #-------------------------------------------------#
 Belt Exam (HTML+CSS)  - Option D/
 Helpful Material and Resources/
-__pycache__
+__pycache__/
+.vscode/
+venv/
+db.sqlite3
+.env
 #--------- From CSS ------------------------------#
 
 #--------- From Git ------------------------------#
